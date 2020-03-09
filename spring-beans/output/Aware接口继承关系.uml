@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.beans.factory.BeanNameAware</OriginalElement>
+  <nodes>
+    <node x="0.0" y="80.0">org.springframework.web.context.ServletContextAware</node>
+    <node x="597.0" y="80.0">org.springframework.beans.factory.BeanFactoryAware</node>
+    <node x="188.0" y="80.0">org.springframework.context.ResourceLoaderAware</node>
+    <node x="438.5" y="0.0">org.springframework.beans.factory.Aware</node>
+    <node x="771.0" y="80.0">org.springframework.beans.factory.BeanNameAware</node>
+    <node x="384.0" y="80.0">org.springframework.context.ApplicationContextAware</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.beans.factory.BeanNameAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.0" />
+      <point x="844.5" y="50.0" />
+      <point x="514.1" y="50.0" />
+      <point x="33.60000000000002" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.ApplicationContextAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.web.context.ServletContextAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.0" />
+      <point x="84.0" y="50.0" />
+      <point x="446.9" y="50.0" />
+      <point x="-33.60000000000002" y="15.0" />
+    </edge>
+    <edge source="org.springframework.context.ResourceLoaderAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.0" />
+      <point x="276.0" y="60.0" />
+      <point x="463.7" y="60.0" />
+      <point x="-16.80000000000001" y="15.0" />
+    </edge>
+    <edge source="org.springframework.beans.factory.BeanFactoryAware" target="org.springframework.beans.factory.Aware">
+      <point x="0.0" y="-15.0" />
+      <point x="674.0" y="60.0" />
+      <point x="497.3" y="60.0" />
+      <point x="16.80000000000001" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="73.5" y="55.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

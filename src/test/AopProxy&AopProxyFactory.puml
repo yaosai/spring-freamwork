@@ -1,0 +1,23 @@
+@startuml
+/'AopProxy'/
+interface AopProxy
+interface InvocationHandler
+class JdkDynamicAopProxy
+class ObjenesisCglibAopProxy
+class CglibAopProxy
+AopProxy<|..JdkDynamicAopProxy:implement
+InvocationHandler<|..JdkDynamicAopProxy:implement
+AopProxy<|..CglibAopProxy:implement
+CglibAopProxy<|--ObjenesisCglibAopProxy:extends
+
+/'AopProxyFactory'/
+interface AopProxyFactory{
+   +AopProxy createAopProxy(AdvisedSupport config)
+}
+hide AopProxyFactory fields
+class DefaultAopProxyFactory
+AopProxyFactory <|.. DefaultAopProxyFactory : implements
+
+/'AopProxy & AopProxyFactory'/
+AopProxyFactory ...> AopProxy : Generator
+@enduml

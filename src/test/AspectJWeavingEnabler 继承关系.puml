@@ -1,0 +1,15 @@
+@startuml
+interface BeanFactoryPostProcessor
+interface BeanClassLoaderAware extends Aware
+note "实现BeanClassLoaderAware接口\n确保在bean初始化时调用\nAbstractAutowireCapableBeanFactory的\ninvokeAwareMethods()时将beanClassLoader\n赋值给当前类" as BCLA_note
+interface LoadTimeWeaverAware extends Aware
+interface Ordered
+note "实现Ordered接口确保在实例化bean时\n当前bean会被最先初始化" as Ordered_note
+class AspectJWeavingEnabler implements BeanFactoryPostProcessor, BeanClassLoaderAware, LoadTimeWeaverAware, Ordered
+BCLA_note ... BeanClassLoaderAware
+Ordered_note...Ordered
+class DefaultContextLoadTimeWeaver implements LoadTimeWeaver, BeanClassLoaderAware, DisposableBean
+note "实现该接口确保了\n在bean销毁时会\n调用destory()\n进行bean的清理" as DisposableBean_note
+DisposableBean_note ... DisposableBean
+note "实现该接口确保了在bean的初始化调用AbstractAutowireCapableBeanFactory的invokeAwareMethod()时调用setBeanClassLoader()" as  BeanClassLoaderAware_note
+@enduml

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.aopalliance.intercept.MethodInterceptor</OriginalElement>
+  <nodes>
+    <node x="132.0" y="80.0">java.lang.FunctionalInterface</node>
+    <node x="41.46527777777777" y="160.0">org.aopalliance.intercept.MethodInterceptor</node>
+    <node x="0.0" y="80.0">org.aopalliance.intercept.Interceptor</node>
+    <node x="350.59027777777777" y="160.0">org.springframework.aop.MethodBeforeAdvice</node>
+    <node x="405.2534722222222" y="240.0">org.springframework.aop.aspectj.AspectJMethodBeforeAdvice</node>
+    <node x="311.96180555555554" y="0.0">org.aopalliance.aop.Advice</node>
+    <node x="139.55208333333331" y="240.0">org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.aop.MethodBeforeAdvice" target="org.aopalliance.aop.Advice">
+      <point x="0.0" y="-15.0" />
+      <point x="435.09027777777777" y="60.0" />
+      <point x="365.71180555555554" y="60.0" />
+      <point x="10.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor" target="org.springframework.aop.MethodBeforeAdvice">
+      <point x="77.66666666666669" y="-15.0" />
+      <point x="333.71875" y="215.0" />
+      <point x="392.84027777777777" y="215.0" />
+      <point x="-42.25" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJMethodBeforeAdvice" target="org.aopalliance.aop.Advice">
+      <point x="53.25" y="-15.0" />
+      <point x="565.0034722222222" y="215.0" />
+      <point x="549.3784722222222" y="215.0" />
+      <point x="549.3784722222222" y="50.0" />
+      <point x="387.21180555555554" y="50.0" />
+      <point x="32.25" y="15.0" />
+    </edge>
+    <edge source="org.aopalliance.intercept.Interceptor" target="org.aopalliance.aop.Advice">
+      <point x="0.0" y="-15.0" />
+      <point x="56.0" y="50.0" />
+      <point x="322.71180555555554" y="50.0" />
+      <point x="-32.25" y="15.0" />
+    </edge>
+    <edge source="org.aopalliance.intercept.MethodInterceptor" target="org.aopalliance.intercept.Interceptor">
+      <point x="-39.25" y="-15.0" />
+      <point x="80.71527777777777" y="135.0" />
+      <point x="56.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.aopalliance.intercept.MethodInterceptor" target="java.lang.FunctionalInterface">
+      <point x="39.25" y="-15.0" />
+      <point x="159.21527777777777" y="135.0" />
+      <point x="211.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor" target="org.aopalliance.intercept.MethodInterceptor">
+      <point x="-77.66666666666669" y="-15.0" />
+      <point x="178.38541666666663" y="215.0" />
+      <point x="119.96527777777777" y="215.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor" target="org.aopalliance.aop.Advice">
+      <point x="0.0" y="-15.0" />
+      <point x="256.0520833333333" y="215.0" />
+      <point x="300.5" y="215.0" />
+      <point x="300.5" y="60.0" />
+      <point x="344.21180555555554" y="60.0" />
+      <point x="-10.75" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJMethodBeforeAdvice" target="org.springframework.aop.MethodBeforeAdvice">
+      <point x="-53.25" y="-15.0" />
+      <point x="458.5034722222222" y="215.0" />
+      <point x="477.34027777777777" y="215.0" />
+      <point x="42.25" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="145.0" y="95.0" />
+  <SelectedNodes>
+    <node>org.aopalliance.intercept.MethodInterceptor</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

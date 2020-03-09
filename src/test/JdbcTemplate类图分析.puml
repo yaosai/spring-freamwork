@@ -1,0 +1,116 @@
+@startuml
+interface JdbcOperations{
+	int update(String sql, PreparedStatementSetter pss)
+	int update(String sql, Object[] args, int[] argTypes)
+}
+abstract class JdbcAccessor implements InitializingBean{
+    #DataSource obtainDataSource()
+    +DataSource getDataSource()
+}
+class SimplePreparedStatementCreator implements PreparedStatementCreator, SqlProvider
+class JdbcTemplate extends JdbcAccessor implements JdbcOperations{
+    +int getFetchSize()
+    +int getMaxRows()
+    +<T> T execute(PreparedStatementCreator psc, PreparedStatementCallback<T> action)
+    +<T> T execute(StatementCallback<T> action)
+    #void handleWarnings(Statement stmt)
+	#int update(final PreparedStatementCreator psc,final PreparedStatementSetter pss)
+	+<T> List<T> query(String sql, Object[] args, int[] argTypes, RowMapper<T> rowMapper)
+	+<T> T query(String sql, Object[] args, int[] argTypes, ResultSetExtractor<T> rse)
+	+<T> T query(String sql, PreparedStatementSetter pss, ResultSetExtractor<T> rse)
+	+<T> List<T> query(String sql, RowMapper<T> rowMapper)
+	+<T> T query(final String sql, final ResultSetExtractor<T> rse)
+	+<T> T queryForObject(String sql, Class<T> requiredType)
+	+<T> T queryForObject(String sql, RowMapper<T> rowMapper)
+	#void applyStatementSettings(Statement stmt)
+}
+JdbcTemplate +-- SimplePreparedStatementCreator
+
+interface PreparedStatementSetter{
+	void setValues(PreparedStatement ps)
+}
+class ArgumentTypePreparedStatementSetter implements PreparedStatementSetter, ParameterDisposer{
+	+ArgumentTypePreparedStatementSetter(Object[] args, int[] argTypes)
+	#void doSetValue(PreparedStatement ps, int parameterPosition, int argType, Object argValue)
+}
+interface PreparedStatementCallback<T> {
+    T doInPreparedStatement(PreparedStatement ps)
+}
+hide PreparedStatementCallback fields
+note left of PreparedStatementCallback:@FunctionalInterface
+
+interface Statement extends Wrapper, AutoCloseable{
+    ResultSet executeQuery(String sql)
+    int executeUpdate(String sql)
+}
+interface PreparedStatement extends Statement{
+    ResultSet executeQuery()
+    int executeUpdate()
+}
+
+interface SqlProvider{
+    String getSql()
+}
+hide SqlProvider fields
+interface StatementCallback<T>{
+    T doInStatement(Statement stmt)
+}
+hide StatementCallback fields
+class QueryStatementCallback implements StatementCallback, SqlProvider
+JdbcTemplate +-- QueryStatementCallback
+abstract class TransactionSynchronizationAdapter implements TransactionSynchronization, Ordered
+class ConnectionSynchronization extends TransactionSynchronizationAdapter
+abstract class DataSourceUtils{
+    +{static} Connection getConnection(DataSource dataSource)
+    +{static} Connection doGetConnection(DataSource dataSource)
+    +{static} Connection fetchConnection(DataSource dataSource)
+    +{static} void releaseConnection(Connection con,DataSource dataSource)
+    +{static} void doReleaseConnection(Connection con,DataSource dataSource)
+    +{static} void doCloseConnection(Connection con,DataSource dataSource)
+}
+DataSourceUtils +-- ConnectionSynchronization
+
+class ConnectionHolder extends ResourceHolderSupport{
+    -ConnectionHandle connectionHandle
+    -Connection currentConnection
+    +ConnectionHolder(Connection connection)
+    #void setConnection(Connection connection)
+}
+abstract class ResourceHolderSupport implements ResourceHolder{
+    -boolean synchronizedWithTransaction = false
+    +boolean isSynchronizedWithTransaction()
+}
+interface DataSource  extends CommonDataSource, Wrapper{
+    Connection getConnection()
+    Connection getConnection(String username, String password)
+}
+abstract class TransactionSynchronizationManager{
+    +{static} boolean isSynchronizationActive()
+    +{static} void registerSynchronization(TransactionSynchronization synchronization)
+    +{static} void bindResource(Object key, Object value)
+    +{static} Object getResource(Object key)
+}
+
+abstract class StatementCreatorUtils{
+    #{static} void setParameterValue(PreparedStatement ps, int paramIndex, int sqlType, Object inValue)
+    -{static} void setParameterValueInternal(PreparedStatement ps, int paramIndex, int sqlType, String typeName, Integer scale, Object inValue)
+    -{static} void setNull(PreparedStatement ps, int paramIndex, int sqlType, String typeName)
+    -{static} void setValue(PreparedStatement ps, int paramIndex, int sqlType, String typeName, Integer scale, Object inValue)
+}
+interface ResultSetExtractor<List<T>>{
+    T extractData(ResultSet rs)
+}
+note top of ResultSetExtractor:回调接口
+class RowMapperResultSetExtractor<T>{
+    -final RowMapper<T> rowMapper
+    +RowMapperResultSetExtractor(RowMapper<T> rowMapper)
+}
+ResultSetExtractor <|.. RowMapperResultSetExtractor
+
+interface RowMapper<T>{
+    T mapRow(ResultSet rs, int rowNum)
+}
+
+
+
+@enduml

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.aop.aspectj.AbstractAspectJAdvice</OriginalElement>
+  <nodes>
+    <node x="432.0" y="0.0">org.springframework.core.Ordered</node>
+    <node x="233.0" y="250.0">org.springframework.aop.aspectj.AspectJAfterReturningAdvice</node>
+    <node x="469.0" y="250.0">org.springframework.aop.aspectj.AspectJAfterAdvice</node>
+    <node x="881.0" y="250.0">org.springframework.aop.aspectj.AspectJAroundAdvice</node>
+    <node x="0.0" y="250.0">org.springframework.aop.aspectj.AspectJAfterThrowingAdvice</node>
+    <node x="648.0" y="250.0">org.springframework.aop.aspectj.AspectJMethodBeforeAdvice</node>
+    <node x="391.0" y="160.0">org.springframework.aop.aspectj.AbstractAspectJAdvice</node>
+    <node x="367.0" y="80.0">org.springframework.aop.aspectj.AspectJPrecedenceInformation</node>
+  </nodes>
+  <notes>
+    <note x="592.1673076923078" y="160.5">
+      <node>org.springframework.aop.aspectj.AspectJAfterAdvice</node>
+      <value>@After</value>
+      <edge>
+        <point x="39.75" y="-15.0" />
+        <point x="588.25" y="230.0" />
+        <point x="620.1673076923078" y="230.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+    <note x="224.9673076923077" y="160.5">
+      <node>org.springframework.aop.aspectj.AspectJAfterReturningAdvice</node>
+      <value>@AfterReturning</value>
+      <edge>
+        <point x="-54.0" y="-15.0" />
+        <point x="287.0" y="210.0" />
+        <point x="279.9673076923077" y="210.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+    <note x="979.75" y="160.5">
+      <node>org.springframework.aop.aspectj.AspectJAroundAdvice</node>
+      <value>@Around</value>
+      <edge>
+        <point x="43.25" y="-15.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+    <note x="776.75" y="160.5">
+      <node>org.springframework.aop.aspectj.AspectJMethodBeforeAdvice</node>
+      <value>@Before</value>
+      <edge>
+        <point x="53.25" y="-15.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+    <note x="1.25" y="160.5">
+      <node>org.springframework.aop.aspectj.AspectJAfterThrowingAdvice</node>
+      <value>@AfterThrowing</value>
+      <edge>
+        <point x="-53.25" y="-15.0" />
+        <point x="0.0" y="14.5" />
+      </edge>
+    </note>
+  </notes>
+  <edges>
+    <edge source="org.springframework.aop.aspectj.AspectJAfterAdvice" target="org.springframework.aop.aspectj.AbstractAspectJAdvice">
+      <point x="-39.75" y="-15.0" />
+      <point x="508.75" y="230.0" />
+      <point x="480.0" y="230.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AbstractAspectJAdvice" target="org.springframework.aop.aspectj.AspectJPrecedenceInformation">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJMethodBeforeAdvice" target="org.springframework.aop.aspectj.AbstractAspectJAdvice">
+      <point x="-53.25" y="-15.0" />
+      <point x="701.25" y="220.0" />
+      <point x="515.6" y="220.0" />
+      <point x="35.599999999999966" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJPrecedenceInformation" target="org.springframework.core.Ordered">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJAfterThrowingAdvice" target="org.springframework.aop.aspectj.AbstractAspectJAdvice">
+      <point x="53.25" y="-15.0" />
+      <point x="159.75" y="220.0" />
+      <point x="408.80000000000007" y="220.0" />
+      <point x="-71.19999999999999" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJAroundAdvice" target="org.springframework.aop.aspectj.AbstractAspectJAdvice">
+      <point x="-43.25" y="-15.0" />
+      <point x="924.25" y="210.0" />
+      <point x="551.2" y="210.0" />
+      <point x="71.19999999999999" y="15.0" />
+    </edge>
+    <edge source="org.springframework.aop.aspectj.AspectJAfterReturningAdvice" target="org.springframework.aop.aspectj.AbstractAspectJAdvice">
+      <point x="54.0" y="-15.0" />
+      <point x="395.0" y="230.0" />
+      <point x="444.4" y="230.0" />
+      <point x="-35.60000000000002" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="319.0" y="95.0" />
+  <SelectedNodes>
+    <node>org.springframework.aop.aspectj.AspectJPrecedenceInformation</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

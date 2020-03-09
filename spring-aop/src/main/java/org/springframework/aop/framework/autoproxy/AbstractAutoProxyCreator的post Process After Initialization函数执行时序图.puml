@@ -1,0 +1,4 @@
+@startuml
+participant proxy as "Property:AbstractAutoProxyCreator"
+proxy->proxy:
+@enduml

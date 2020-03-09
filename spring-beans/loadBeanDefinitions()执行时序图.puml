@@ -1,0 +1,35 @@
+@startuml
+title:loadBeanDefinitions()加载Resouce并实例化Bean
+participant XmlBeanFactory
+participant read as "XmlBeanDefinitionReader:read"
+participant EncodeResource
+participant Resource
+participant InputSource
+participant loader as "DefaultDocumentLoader:loader"
+participant documentReader as "DefaultBeanDefinitionDocumentReader:documentReader"
+participant Document
+XmlBeanFactory->read:read.loadBeanDefinitions(resource)
+read->EncodeResource:new EncodeResource(resource)
+read<--EncodeResource:EncodeResource encodeResource
+read->read:loadBeanDefinitions(encodeResource)
+read->EncodeResource:encodeResource.getResource()
+read<--EncodeResource:Resource resource
+read->Resource:resource.getInputStream()
+read<--Resource:InputStream inputStream
+read->InputSource:new InputSource(inputStream)
+read<--InputSource:InputSource inputSource
+read->read:doLoadBeanDefinitions(inputSource,resource) int
+read->read:doLoadDocument(inputSource,resource)
+read->read:int validationMode=getValidationModeForResource(resource) 判断是否包含"DOCTYPE"
+read->read:EntityResolver entityResolver=getEntityResolver()
+read->loader:loader.loadDocument(inputSource,entityResolver,errorHandler,validationMode,boolean)
+read<--loader:Document doc
+read->read:registerBeanDefinitions(doc,resource)
+read->documentReader:registerBeanDefinitions(doc,XmlReaderContext(resource))
+documentReader->Document:doc.getDocumentElement()
+documentReader<--Document:DocumentElement root
+documentReader->documentReader:doRegisterBeanDefinitions(root)
+documentReader->documentReader:preProcessXml(root) 空方法 模板方法设计模式
+documentReader->documentReader:parseBeanDefinitions(root,BeanDefinitionParserDelegate)
+documentReader->documentReader:postProcessXml(root) 空方法 模板方法设计模式
+@enduml

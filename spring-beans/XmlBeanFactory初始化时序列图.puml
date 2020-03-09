@@ -1,0 +1,13 @@
+@startuml
+title BeanFactory bf=new XmlBeanFactory(new ClassPathResource("bean.xml"))
+actor main
+participant ClassPathResource
+participant XmlBeanFactory
+participant read as "XmlBeanDefinitionReader:read"
+main->ClassPathResource:new ClassPathResource("bean.xml")
+main<--ClassPathResource:Resource:resource
+main->XmlBeanFactory:new XmlBeanFactory(resource)
+XmlBeanFactory->read:reader.loadBeanDefinitions(resource)
+XmlBeanFactory<--read:int loadBeanDefinitions(new EncodedResource(resource))
+main<--XmlBeanFactory:BeanFactory bf
+@enduml

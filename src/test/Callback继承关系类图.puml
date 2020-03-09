@@ -1,0 +1,14 @@
+@startuml
+interface Callback {
+}
+hide Callback fields
+hide Callback methods
+interface MethodInterceptor extends Callback{
+   +Object intercept(Object, Method, Object[], MethodProxy)
+}
+hide MethodInterceptor fields
+interface Dispatcher extends Callback {
+    +Object loadObject()
+}
+hide Dispatcher fields
+@enduml

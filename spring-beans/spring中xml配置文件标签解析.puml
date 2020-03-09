@@ -1,0 +1,23 @@
+@startuml
+actor documentReader as "DefaultBeanDefinitionDocumentReader:documentReader"
+participant delegate as "BeanDefinitionParserDelegate:delegate"
+participant util as "BeanDefinitionReaderUtils"
+participant context as "XmlReaderContext"
+documentReader->documentReader:parseBeanDefinitions(root,delegate)
+documentReader->delegate:isDefaultNamespace(element)
+delegate->delegate:先String getNamespaceURI(node)，然后boolean isDefaultNamespace(String)
+documentReader<--delegate:( if ) return ture
+documentReader->documentReader:parseDefaultElement(element,delegate) 分别是import、alias、bean、beans
+documentReader-->documentReader:importBeanDefinitionResource(element) 处理import标签
+documentReader-->documentReader:processAliasRegistration(element) 处理alias标签
+documentReader-->documentReader:processBeanDefinition(element,this.delegate) 处理bean标签
+documentReader->delegate:parseBeanDefinitionElement(element)
+documentReader<--delegate:BeanDefinitionHolder bdHolder 该实例中封装了beanDefinition,beanDefinition对<bean>进行了封装
+documentReader->delegate:decorateBeanDefinitionIfRequired(element,bdHolder)
+documentReader<--delegate:bdHolder
+documentReader->util:registerBeanDefinition(bdHolder,getReaderContext().getRegistry())
+documentReader->context:fireComponentRegistered(new BeanComponentDefinition(bdHolder))
+documentReader-->documentReader:doRegisterBeanDefinitions(element) 处理beans标签
+documentReader<--delegate:( else if ) return false
+documentReader->delegate:parseCustomElement(element)
+@enduml
