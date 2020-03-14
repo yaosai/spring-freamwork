@@ -572,7 +572,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
-				//完成BeanFactory的初始化工作
+				// 完成BeanFactory的初始化工作,实例化bean也在此步骤完成
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -923,7 +923,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize LoadTimeWeaverAware beans early to allow for registering their transformers early.
-		//初始化LoadTimeWeaverAware beans
+		//初始化LoadTimeWeaverAware beans,此类bean用来在将类加载到Java虚拟机(JVM)中时动态地转换类
 		String[] weaverAwareNames = beanFactory.getBeanNamesForType(LoadTimeWeaverAware.class, false, false);
 		for (String weaverAwareName : weaverAwareNames) {
 			getBean(weaverAwareName);
@@ -937,7 +937,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
-		//初始化剩下的单实例（非惰性的）
+		//初始化剩下的单实例，90%的bean都在此被实例化
 		beanFactory.preInstantiateSingletons();
 	}
 

@@ -288,7 +288,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 					return ((AbstractBeanFactory) parentBeanFactory).doGetBean(
 							nameToLookup, requiredType, args, typeCheckOnly);
 				} else if (args != null) {
-					//递归到BeanFactory中去寻找
+					// 递归到BeanFactory中去寻找
 					// Delegation to parent with explicit args.
 					return (T) parentBeanFactory.getBean(nameToLookup, args);
 				} else if (requiredType != null) {
@@ -339,6 +339,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				if (mbd.isSingleton()) {
 					sharedInstance = getSingleton(beanName, () -> {
 						try {
+							//重点关注此方法
 							return createBean(beanName, mbd, args);
 						} catch (BeansException ex) {
 							// Explicitly remove instance from singleton cache: It might have been put there
